@@ -15,12 +15,12 @@ class Car
     @@all
   end
 
-  def classifications
+  def self.classifications
     self.all.map {|car| car.classification}.uniq
   end
 
-  def find_mechanic_by_specialty(spec)
-    Mechanic.all.select {|mechanic| mechanic.specialty == spec}
+  def find_mechanic_by_specialty
+    Mechanic.all.select {|mechanic| mechanic.specialty == self.classification}
   end
 
 end

@@ -7,6 +7,10 @@ class CarOwner
     @name = name
     @@all << self
   end
+  
+  def self.all
+    @@all
+  end
 
   def cars
     Car.all.select {|car| car.owner == self}
@@ -18,7 +22,7 @@ class CarOwner
 
   def self.average_owned
     cars_owned = Car.all.select {|car| car.owner}
-    cars_owned.count / cars_owned.map {|car| car.owner}.uniq.count
+    cars_owned.count / (cars_owned.map {|car| car.owner}.uniq.count).to_f
   end
 
 end
